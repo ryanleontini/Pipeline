@@ -24,7 +24,8 @@ module OTTER_ALU(
     input [31:0] ALU_a, 
     input [31:0] ALU_b,
     input [3:0] ALU_FUN,
-    output [31:0] ALU_RESULT );
+    output logic [31:0] ALU_RESULT,
+    output logic ZeroE );
     
     // All operations are completed. ALU FUN only determines which is outputted.
     logic [31:0] r; // Temporary RESULT holder
@@ -82,5 +83,7 @@ module OTTER_ALU(
             default: r = 32'hdeaddead;
             // Default should never be outputed
         endcase
+        
+        ZeroE = (ALU_RESULT == 0) ? 1'b1 : 1'b0;
     end
 endmodule

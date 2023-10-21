@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/20/2023 03:33:10 PM
+// Create Date: 10/21/2023 11:04:06 AM
 // Design Name: 
-// Module Name: DataMem
+// Module Name: M_W_PipeReg
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DATAMEM(
-    input clk,
-    input we,
-    input [31:0] a,
-    input [31:0] wd,
-    output [31:0] rd
+module M_W_PipeReg(
+    input CLK,
+    input [31:0] ALUResultM,
+    input [31:0] ReadDataM,
+    input [11:7] RdM,
+    input [31:0] PCPlus4M,
+    output [31:0] ALUResultW,
+    output [31:0] ReadDataW,
+    output [11:7] RdW,
+    output [31:0] PCPlus4W
     );
-    
-    logic [31:0] RAM[63:0];
-    
-    assign rd = RAM[a[31:2]]; // word aligned
-    
-    always_ff @(posedge clk)
-        if(we) RAM[a[31:2]] <= wd;
-    
 endmodule

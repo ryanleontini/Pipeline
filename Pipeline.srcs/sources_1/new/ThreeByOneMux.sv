@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/20/2023 03:33:10 PM
+// Create Date: 10/21/2023 11:08:47 AM
 // Design Name: 
-// Module Name: DataMem
+// Module Name: ThreeByOneMux
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DATAMEM(
-    input clk,
-    input we,
-    input [31:0] a,
-    input [31:0] wd,
-    output [31:0] rd
+module ThreeByOneMux(
+    input [31:0] d0,
+    input [31:0] d1,
+    input [31:0] d2,
+    input [1:0] s,
+    output [31:0] y
     );
     
-    logic [31:0] RAM[63:0];
-    
-    assign rd = RAM[a[31:2]]; // word aligned
-    
-    always_ff @(posedge clk)
-        if(we) RAM[a[31:2]] <= wd;
+    assign y = s[1] ? d2 : (s[0] ? d1 : d0);
     
 endmodule
