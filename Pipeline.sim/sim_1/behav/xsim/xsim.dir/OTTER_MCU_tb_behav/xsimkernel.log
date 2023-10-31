@@ -1,0 +1,4 @@
+Running: xsim.dir/OTTER_MCU_tb_behav/xsimk.exe -simmode gui -wdb OTTER_MCU_tb_behav.wdb -simrunnum 0 -socket 53904
+Design successfully loaded
+Design Loading Memory Usage: 7192 KB (Peak: 7192 KB)
+Design Loading CPU Usage: 0 ms

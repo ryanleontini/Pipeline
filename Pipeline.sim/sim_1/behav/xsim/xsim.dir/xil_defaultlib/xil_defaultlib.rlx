@@ -1,0 +1,22 @@
+0.7
+2020.2
+Apr 18 2022
+16:05:34
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.sim/sim_1/behav/xsim/glbl.v,1649976174,verilog,,,,glbl,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sim_1/new/OTTER_MCU_tb.sv,1698773043,systemVerilog,,,,OTTER_MCU_tb,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/Adder.sv,1697909098,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/ControlUnit.sv,,ADDER,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/DataMem.sv,1698777359,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/EXTEND.sv,,DATAMEM,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/EXTEND.sv,1697906740,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/EX_M_PipeReg.sv,,EXTEND,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv,1698774271,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/M_W_PipeReg.sv,,INSTMEM,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv,1698776946,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,,OTTER_ALU,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,1677082993,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ThreeByOneMux.sv,,REG_FILE,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ThreeByOneMux.sv,1697911793,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/TwoByOneMux.sv,,ThreeByOneMux,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/TwoByOneMux.sv,1697905477,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/flopr.sv,,TwoByOneMux,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/flopr.sv,1698771626,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/otter_mcu_pipeline_template_v2.sv,,flopReset,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/ALUDecoder.sv,1698472519,systemVerilog,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sim_1/new/OTTER_MCU_tb.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/Adder.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/DataMem.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/EXTEND.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ThreeByOneMux.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/TwoByOneMux.sv;C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/flopr.sv;C:/Users/rmleo/Desktop/CPE333/new_pipeline/ControlUnit.sv;C:/Users/rmleo/Desktop/CPE333/new_pipeline/EX_M_PipeReg.sv;C:/Users/rmleo/Desktop/CPE333/new_pipeline/ID_EX_PipeReg.sv;C:/Users/rmleo/Desktop/CPE333/new_pipeline/IF_ID_PipeReg.sv;C:/Users/rmleo/Desktop/CPE333/new_pipeline/M_W_PipeReg.sv;C:/Users/rmleo/Desktop/CPE333/new_pipeline/otter_mcu_pipeline_template_v2.sv,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/Adder.sv,,$unit_ALUDecoder_sv_1614690021;ALUDecoder,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/ControlUnit.sv,1698775141,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/DataMem.sv,,ControlUnit,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/EX_M_PipeReg.sv,1698128622,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/ID_EX_PipeReg.sv,,EX_M_PipeReg,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/ID_EX_PipeReg.sv,1698127442,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/IF_ID_PipeReg.sv,,ID_EX_PipeReg,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/IF_ID_PipeReg.sv,1698124206,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv,,IF_ID_PipeReg,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/M_W_PipeReg.sv,1698172148,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv,,M_W_PipeReg,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/new_pipeline/otter_mcu_pipeline_template_v2.sv,1698776163,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sim_1/new/OTTER_MCU_tb.sv,,OTTER_MCU,,uvm,,,,,,

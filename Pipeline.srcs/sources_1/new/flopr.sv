@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/20/2023 03:33:10 PM
+// Create Date: 10/31/2023 09:53:34 AM
 // Design Name: 
-// Module Name: DataMem
+// Module Name: flopr
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DATAMEM(
-    input clk,
-    input we,
-    input logic [31:0] a,
-    input logic [31:0] wd,
-    output logic [31:0] rd
+module flopReset(
+    input logic clk,
+    input logic reset,
+    input logic [31:0] d,
+    output logic [31:0] q
     );
     
-    logic [31:0] RAM[63:0];
-    
-    assign rd = RAM[a[31:2]]; // word aligned
-    
-    always_ff @(posedge clk)
-        if(we) RAM[a[31:2]] <= wd;
-    
+    always_ff @(posedge clk, posedge reset)
+        if (reset) q <= 0;
+        else q <= d;
+        
 endmodule

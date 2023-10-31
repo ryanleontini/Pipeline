@@ -23,7 +23,7 @@
 module OTTER_ALU(
     input [31:0] ALU_a, 
     input [31:0] ALU_b,
-    input [3:0] ALU_FUN,
+    input [2:0] ALU_FUN,
     output logic [31:0] ALU_RESULT,
     output logic ZeroE );
     
@@ -40,6 +40,10 @@ module OTTER_ALU(
     logic [31:0] SLT; // Temporary A < B holder
     logic [31:0] SLTU; // Temporary A < B holder
     logic [31:0] LUI_COPY; // Reflects A
+    
+    logic [3:0] ALU_FUN4BIT;      // Your 4-bit output
+
+    assign ALU_FUN4BIT = {1'b0, ALU_FUN};  // Concatenate 0 to the MSB of input3bit
     
     
     // Assignments for the holders
@@ -68,7 +72,7 @@ module OTTER_ALU(
             SLTU = 0; end
             
             
-        case (ALU_FUN) // ALU FUN determines which operation to output
+        case (ALU_FUN4BIT) // ALU FUN determines which operation to output
             4'b0000: r = ADD; 
             4'b1000: r = SUB; 
             4'b0110: r = OR1; 

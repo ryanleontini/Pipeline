@@ -1,0 +1,31 @@
+Vivado Simulator v2022.1
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot OTTER_MCU_tb_behav xil_defaultlib.OTTER_MCU_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 3 for port 'ALUop' [C:/Users/rmleo/Desktop/CPE333/new_pipeline/otter_mcu_pipeline_template_v2.sv:177]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_ALUDecoder_sv_1614690021
+Compiling module xil_defaultlib.TwoByOneMux
+Compiling module xil_defaultlib.flopReset
+Compiling module xil_defaultlib.INSTMEM
+Compiling module xil_defaultlib.ADDER
+Compiling module xil_defaultlib.IF_ID_PipeReg
+Compiling module xil_defaultlib.REG_FILE
+Compiling module xil_defaultlib.EXTEND
+Compiling module xil_defaultlib.ControlUnit
+Compiling module xil_defaultlib.ALUDecoder
+Compiling module xil_defaultlib.ID_EX_PipeReg
+Compiling module xil_defaultlib.OTTER_ALU
+Compiling module xil_defaultlib.EX_M_PipeReg
+Compiling module xil_defaultlib.DATAMEM
+Compiling module xil_defaultlib.M_W_PipeReg
+Compiling module xil_defaultlib.ThreeByOneMux
+Compiling module xil_defaultlib.OTTER_MCU
+Compiling module xil_defaultlib.OTTER_MCU_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot OTTER_MCU_tb_behav
