@@ -72,18 +72,12 @@ module OTTER_ALU(
             SLTU = 0; end
             
             
-        case (ALU_FUN4BIT) // ALU FUN determines which operation to output
-            4'b0000: r = ADD; 
-            4'b1000: r = SUB; 
-            4'b0110: r = OR1; 
-            4'b0111: r = AND1; 
-            4'b0100: r = XOR1; 
-            4'b0101: r = SRL; 
-            4'b0001: r = SLL; 
-            4'b1101: r = SRA; 
-            4'b0010: r = SLT; 
-            4'b0011: r = SLTU; 
-            4'b1001: r = LUI_COPY; 
+        case (ALU_FUN) // ALU FUN determines which operation to output
+            3'b000: r = ADD; 
+            3'b001: r = SUB; 
+            3'b101: r = SLT; 
+            3'b011: r = OR1; 
+            3'b010: r = AND1; 
             default: r = 32'hdeaddead;
             // Default should never be outputed
         endcase

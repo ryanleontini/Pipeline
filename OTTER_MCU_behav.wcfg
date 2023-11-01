@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="65.429 ns"></ZoomStartTime>
-      <ZoomEndTime time="141.627 ns"></ZoomEndTime>
-      <Cursor1Time time="129.313 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="180.001 ns"></ZoomEndTime>
+      <Cursor1Time time="22.342 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="119"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="44" />
    <wvobject fp_name="/OTTER_MCU_tb/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -76,6 +76,14 @@
    <wvobject fp_name="/OTTER_MCU_tb/UUT/IFIDReg/InstrToD" type="array">
       <obj_property name="ElementShortName">InstrToD[31:0]</obj_property>
       <obj_property name="ObjectShortName">InstrToD[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/ALUControlD" type="array">
+      <obj_property name="ElementShortName">ALUControlD[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUControlD[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/ALUControlE" type="array">
+      <obj_property name="ElementShortName">ALUControlE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUControlE[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="group1211" type="group">
       <obj_property name="label">REG_FILE</obj_property>
@@ -153,10 +161,6 @@
    <wvobject fp_name="/OTTER_MCU_tb/UUT/IDEXReg/ramCU" type="array">
       <obj_property name="ElementShortName">ramCU[9:0]</obj_property>
       <obj_property name="ObjectShortName">ramCU[9:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/MainDecoder/ALUop" type="array">
-      <obj_property name="ElementShortName">ALUop[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ALUop[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/IDEXReg/ALUControlE" type="array">
       <obj_property name="ElementShortName">ALUControlE[2:0]</obj_property>
@@ -246,6 +250,10 @@
    <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[10]" type="array">
       <obj_property name="ElementShortName">[10][31:0]</obj_property>
       <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[28]" type="array">
+      <obj_property name="ElementShortName">[28][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[28][31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="group1244" type="group">
       <obj_property name="label">Write Stage</obj_property>
