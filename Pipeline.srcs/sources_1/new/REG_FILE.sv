@@ -34,9 +34,9 @@ module REG_FILE(
     assign  RF_RS1 = ram[RF_ADR1];
     assign  RF_RS2 = ram[RF_ADR2];
     
-    always @ (posedge clk) begin
+    always @ (negedge clk) begin
         if (RF_EN) begin
-            if (RF_WA != 1'd0) begin
+            if (RF_WA != 5'd0) begin
                 ram[RF_WA] <= RF_WD;
             end
         end

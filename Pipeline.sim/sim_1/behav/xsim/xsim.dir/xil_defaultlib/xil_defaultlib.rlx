@@ -8,7 +8,7 @@ C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/Adder.sv,1697
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/DataMem.sv,1698787749,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/EXTEND.sv,,DATAMEM,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/EXTEND.sv,1697906740,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/EX_M_PipeReg.sv,,EXTEND,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv,1698774271,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/new_pipeline/M_W_PipeReg.sv,,INSTMEM,,uvm,,,,,,
-C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv,1698776946,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,,OTTER_ALU,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv,1698797668,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,,OTTER_ALU,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,1677082993,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ThreeByOneMux.sv,,REG_FILE,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ThreeByOneMux.sv,1697911793,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/TwoByOneMux.sv,,ThreeByOneMux,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/TwoByOneMux.sv,1697905477,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/flopr.sv,,TwoByOneMux,,uvm,,,,,,
