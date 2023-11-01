@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="120.001 ns"></ZoomEndTime>
-      <Cursor1Time time="120.000 ns"></Cursor1Time>
+      <ZoomStartTime time="65.429 ns"></ZoomStartTime>
+      <ZoomEndTime time="141.627 ns"></ZoomEndTime>
+      <Cursor1Time time="129.313 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="147"></NameColumnWidth>
+      <NameColumnWidth column_width="119"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="30" />
+   <WVObjectSize size="42" />
    <wvobject fp_name="/OTTER_MCU_tb/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -61,37 +61,50 @@
          <obj_property name="ObjectShortName">y[31:0]</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/PCF" type="array">
-      <obj_property name="ElementShortName">PCF[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PCF[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/PCFPrime" type="array">
-      <obj_property name="ElementShortName">PCFPrime[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PCFPrime[31:0]</obj_property>
+   <wvobject fp_name="group1210" type="group">
+      <obj_property name="label">PC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/PCF" type="array">
+         <obj_property name="ElementShortName">PCF[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PCF[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/PCFPrime" type="array">
+         <obj_property name="ElementShortName">PCFPrime[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PCFPrime[31:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/IFIDReg/InstrToD" type="array">
       <obj_property name="ElementShortName">InstrToD[31:0]</obj_property>
       <obj_property name="ObjectShortName">InstrToD[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_EN" type="logic">
-      <obj_property name="ElementShortName">RF_EN</obj_property>
-      <obj_property name="ObjectShortName">RF_EN</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_ADR1" type="array">
-      <obj_property name="ElementShortName">RF_ADR1[4:0]</obj_property>
-      <obj_property name="ObjectShortName">RF_ADR1[4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_ADR2" type="array">
-      <obj_property name="ElementShortName">RF_ADR2[4:0]</obj_property>
-      <obj_property name="ObjectShortName">RF_ADR2[4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_RS1" type="array">
-      <obj_property name="ElementShortName">RF_RS1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RF_RS1[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_RS2" type="array">
-      <obj_property name="ElementShortName">RF_RS2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RF_RS2[31:0]</obj_property>
+   <wvobject fp_name="group1211" type="group">
+      <obj_property name="label">REG_FILE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/ram" type="array">
+         <obj_property name="ElementShortName">ram[0:31][31:0]</obj_property>
+         <obj_property name="ObjectShortName">ram[0:31][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_EN" type="logic">
+         <obj_property name="ElementShortName">RF_EN</obj_property>
+         <obj_property name="ObjectShortName">RF_EN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_ADR1" type="array">
+         <obj_property name="ElementShortName">RF_ADR1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RF_ADR1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_ADR2" type="array">
+         <obj_property name="ElementShortName">RF_ADR2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RF_ADR2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_RS1" type="array">
+         <obj_property name="ElementShortName">RF_RS1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">RF_RS1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_RS2" type="array">
+         <obj_property name="ElementShortName">RF_RS2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">RF_RS2[31:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/MainDecoder/RegWriteD" type="logic">
       <obj_property name="ElementShortName">RegWriteD</obj_property>
@@ -101,6 +114,26 @@
       <obj_property name="ElementShortName">RegWriteE</obj_property>
       <obj_property name="ObjectShortName">RegWriteE</obj_property>
    </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RegWriteM" type="logic">
+      <obj_property name="ElementShortName">RegWriteM</obj_property>
+      <obj_property name="ObjectShortName">RegWriteM</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RegWriteW" type="logic">
+      <obj_property name="ElementShortName">RegWriteW</obj_property>
+      <obj_property name="ObjectShortName">RegWriteW</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RdE" type="array">
+      <obj_property name="ElementShortName">RdE[11:7]</obj_property>
+      <obj_property name="ObjectShortName">RdE[11:7]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RdM" type="array">
+      <obj_property name="ElementShortName">RdM[11:7]</obj_property>
+      <obj_property name="ObjectShortName">RdM[11:7]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RdW" type="array">
+      <obj_property name="ElementShortName">RdW[11:7]</obj_property>
+      <obj_property name="ObjectShortName">RdW[11:7]</obj_property>
+   </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/MainDecoder/ResultSrcD" type="array">
       <obj_property name="ElementShortName">ResultSrcD[1:0]</obj_property>
       <obj_property name="ObjectShortName">ResultSrcD[1:0]</obj_property>
@@ -108,6 +141,14 @@
    <wvobject fp_name="/OTTER_MCU_tb/UUT/IDEXReg/ResultSrcE" type="array">
       <obj_property name="ElementShortName">ResultSrcE[1:0]</obj_property>
       <obj_property name="ObjectShortName">ResultSrcE[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/ResultSrcM" type="array">
+      <obj_property name="ElementShortName">ResultSrcM[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ResultSrcM[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/ResultSrcW" type="array">
+      <obj_property name="ElementShortName">ResultSrcW[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ResultSrcW[1:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/IDEXReg/ramCU" type="array">
       <obj_property name="ElementShortName">ramCU[9:0]</obj_property>
@@ -141,24 +182,110 @@
       <obj_property name="ElementShortName">a[31:0]</obj_property>
       <obj_property name="ObjectShortName">a[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/rd" type="array">
-      <obj_property name="ElementShortName">rd[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd[31:0]</obj_property>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/MainDecoder/MemWriteD" type="logic">
+      <obj_property name="ElementShortName">MemWriteD</obj_property>
+      <obj_property name="ObjectShortName">MemWriteD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/IDEXReg/MemWriteE" type="logic">
+      <obj_property name="ElementShortName">MemWriteE</obj_property>
+      <obj_property name="ObjectShortName">MemWriteE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/EXMReg/MemWriteM" type="logic">
+      <obj_property name="ElementShortName">MemWriteM</obj_property>
+      <obj_property name="ObjectShortName">MemWriteM</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RD2D" type="array">
+      <obj_property name="ElementShortName">RD2D[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RD2D[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/RD2E" type="array">
+      <obj_property name="ElementShortName">RD2E[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RD2E[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/WriteDataE" type="array">
+      <obj_property name="ElementShortName">WriteDataE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WriteDataE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/WriteDataM" type="array">
+      <obj_property name="ElementShortName">WriteDataM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WriteDataM[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group1245" type="group">
+      <obj_property name="label">Data Memory</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/a" type="array">
+         <obj_property name="ElementShortName">a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/wd" type="array">
+         <obj_property name="ElementShortName">wd[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wd[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/rd" type="array">
+         <obj_property name="ElementShortName">rd[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rd[31:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/EXMReg/ALUResultM" type="array">
       <obj_property name="ElementShortName">ALUResultM[31:0]</obj_property>
       <obj_property name="ObjectShortName">ALUResultM[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/a" type="array">
-      <obj_property name="ElementShortName">a[31:0]</obj_property>
-      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM" type="array">
+      <obj_property name="ElementShortName">RAM[63:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">RAM[63:0][31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/rd" type="array">
-      <obj_property name="ElementShortName">rd[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd[31:0]</obj_property>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[2]" type="array">
+      <obj_property name="ElementShortName">[2][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[2][31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/MWReg/ReadDataW" type="array">
-      <obj_property name="ElementShortName">ReadDataW[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ReadDataW[31:0]</obj_property>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[10]" type="array">
+      <obj_property name="ElementShortName">[10][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group1244" type="group">
+      <obj_property name="label">Write Stage</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/MWReg/ReadDataW" type="array">
+         <obj_property name="ElementShortName">ReadDataW[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ReadDataW[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/MWReg/ALUResultW" type="array">
+         <obj_property name="ElementShortName">ALUResultW[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALUResultW[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/ResultW" type="array">
+         <obj_property name="ElementShortName">ResultW[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ResultW[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group926" type="group">
+      <obj_property name="label">3x1Mux</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/WMux/d0" type="array">
+         <obj_property name="ElementShortName">d0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d0[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/WMux/d1" type="array">
+         <obj_property name="ElementShortName">d1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/WMux/d2" type="array">
+         <obj_property name="ElementShortName">d2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/WMux/s" type="array">
+         <obj_property name="ElementShortName">s[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/WMux/y" type="array">
+         <obj_property name="ElementShortName">y[31:0]</obj_property>
+         <obj_property name="ObjectShortName">y[31:0]</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

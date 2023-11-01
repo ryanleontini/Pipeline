@@ -21,8 +21,7 @@
 
 
 module DATAMEM(
-    input clk,
-    input we,
+    input logic clk, we,
     input logic [31:0] a,
     input logic [31:0] wd,
     output logic [31:0] rd

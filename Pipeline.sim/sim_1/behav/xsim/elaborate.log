@@ -4,7 +4,7 @@ Running: C:/Xilinx/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 3 for port 'ALUop' [C:/Users/rmleo/Desktop/CPE333/new_pipeline/otter_mcu_pipeline_template_v2.sv:177]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 3 for port 'ALUop' [C:/Users/rmleo/Desktop/CPE333/new_pipeline/otter_mcu_pipeline_template_v2.sv:182]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
