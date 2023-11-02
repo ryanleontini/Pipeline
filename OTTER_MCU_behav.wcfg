@@ -13,14 +13,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="180.001 ns"></ZoomEndTime>
+      <ZoomEndTime time="152.754 ns"></ZoomEndTime>
       <Cursor1Time time="80.149 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="154"></NameColumnWidth>
-      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="37" />
+   <WVObjectSize size="35" />
    <wvobject fp_name="/OTTER_MCU_tb/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -77,6 +77,10 @@
       <obj_property name="ElementShortName">InstrToD[31:0]</obj_property>
       <obj_property name="ObjectShortName">InstrToD[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[10]" type="array">
+      <obj_property name="ElementShortName">[10][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/OTTER_MCU_tb/UUT/ALUControlD" type="array">
       <obj_property name="ElementShortName">ALUControlD[2:0]</obj_property>
       <obj_property name="ObjectShortName">ALUControlD[2:0]</obj_property>
@@ -88,11 +92,9 @@
    <wvobject fp_name="group1211" type="group">
       <obj_property name="label">REG_FILE</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/ram" type="array">
          <obj_property name="ElementShortName">ram[0:31][31:0]</obj_property>
          <obj_property name="ObjectShortName">ram[0:31][31:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/registerFile/RF_EN" type="logic">
          <obj_property name="ElementShortName">RF_EN</obj_property>
@@ -238,7 +240,6 @@
    <wvobject fp_name="group1245" type="group">
       <obj_property name="label">Data Memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/a" type="array">
          <obj_property name="ElementShortName">a[31:0]</obj_property>
          <obj_property name="ObjectShortName">a[31:0]</obj_property>
@@ -260,22 +261,9 @@
       <obj_property name="ElementShortName">RAM[63:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">RAM[63:0][31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[2]" type="array">
-      <obj_property name="ElementShortName">[2][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[2][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[10]" type="array">
-      <obj_property name="ElementShortName">[10][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[10][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OTTER_MCU_tb/UUT/dataMemory/RAM[28]" type="array">
-      <obj_property name="ElementShortName">[28][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[28][31:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="group1244" type="group">
       <obj_property name="label">Write Stage</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/MWReg/ReadDataW" type="array">
          <obj_property name="ElementShortName">ReadDataW[31:0]</obj_property>
          <obj_property name="ObjectShortName">ReadDataW[31:0]</obj_property>
