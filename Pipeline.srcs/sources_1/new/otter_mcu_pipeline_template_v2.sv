@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-  typedef enum logic [6:0] {
+typedef enum logic [6:0] {
            LUI      = 7'b0110111,
            AUIPC    = 7'b0010111,
            JAL      = 7'b1101111,
@@ -73,8 +73,32 @@ module OTTER_MCU(input CLK,
     logic br_lt,br_eq,br_ltu;
     
 //==== Control Unit Wires ===========================================
+    
+    logic RegWriteD;
+    logic [1:0] ResultSrcD;
+    logic MemWriteD;
+    logic JumpD;
+    logic BranchD;
+    logic [2:0] ALUControlD;
+    logic ALUSrcD;
+    logic [1:0] ImmSrcD;
+    
     logic PCSrcE;
+    logic RegWriteE;
+    logic [1:0] ResultSrcE;
+    logic MemWriteE;
+    logic JumpE;
+    logic BranchE;
+    logic [2:0] ALUControlE;
+    logic ALUSrcE;
+    
+    logic RegWriteM;
+    logic [1:0] ResultSrcM;
+    logic MemWriteM;
+    
     logic RegWriteW;
+    logic [1:0] ResultSrcW;
+    
               
 //==== Instruction Fetch ===========================================
     
@@ -82,10 +106,12 @@ module OTTER_MCU(input CLK,
     
     TwoByOneMux IFMux(PCPlus4F, PCTargetE, PCSrcE, PCFPrime);
     
+    logic StallFFlipped;
+    // Basically, if a stall is not being signalled, run the pipe reg.
+    assign StallFFlipped = ~StallF;
+    
     // Program Counter
-    always_ff @(posedge CLK) begin
-            PCF <= PCFPrime; // should these be switched?
-    end
+    flopReset flopr(.clk(CLK), .reset(RESET), .d(PCFPrime), .q(PCF), .StallFFlipped(StallFFlipped));
     
     assign pcWrite = 1'b1; 	//Hardwired high, assuming now hazards
     assign memRead1 = 1'b1; 	//Fetch new instruction every cycle
@@ -94,8 +120,8 @@ module OTTER_MCU(input CLK,
     INSTMEM instructionMemory(PCF, RD);
     
     // ADDER
-    logic [2:0] hardcoded4;
-    assign hardcoded4 = 3'b100;
+    logic [31:0] hardcoded4;
+    assign hardcoded4 = 32'd4;
     
     ADDER ifAdder(PCF, hardcoded4, PCPlus4F);
     
@@ -103,13 +129,15 @@ module OTTER_MCU(input CLK,
     
     logic [31:0] InstrD, PCD, PCPlus4D; // Pipeline reg outputs.
     
-    IF_ID_PipeReg IFIDReg(CLK, RD, PCF, PCPlus4F, InstrD, PCD, PCPlus4D);
+    // Stalling
+    logic StallDFlipped;
+    // Basically, if a stall is not being signalled, run the pipe reg.
+    assign StallDFlipped = ~StallD;
+    
+    IF_ID_PipeReg IFIDReg(CLK, RD, PCF, PCPlus4F, InstrD, PCD, PCPlus4D, StallDFlipped);
 
      
 //==== Instruction Decode ===========================================
-    logic [31:0] de_ex_opA;
-    logic [31:0] de_ex_opB;
-    logic [31:0] de_ex_rs2;
     
     logic [31:0] RD1D;
     logic [31:0] RD2D;
@@ -119,35 +147,54 @@ module OTTER_MCU(input CLK,
     opcode_t OPCODE;
     assign OPCODE_t = opcode_t'(opcode);
     
-    assign de_inst.rs1_addr=InstrD[19:15];
-    assign de_inst.rs2_addr=InstrD[24:20];
-    assign de_inst.rd_addr=InstrD[11:7];
+    logic [4:0] RdD, RS1A1, RS2A2, RDA3;
+    assign RdD = InstrD[11:7];
+    assign RS1A1 = InstrD[19:15];
+    assign RS2A2 = InstrD[24:20];
+    assign RDA3 = InstrD[11:7];
     assign de_inst.opcode=OPCODE;
-   
-//    assign de_inst.rs1_used=    de_inst.rs1 != 0
-//                                && de_inst.opcode != LUI
-//                                && de_inst.opcode != AUIPC
-//                                && de_inst.opcode != JAL;
+    
+    logic [4:0] Rs1D, Rs2D;
+    assign Rs1D = InstrD[19:15];
+    assign Rs2D = InstrD[24:20];
 
-    REG_FILE registerFile(de_inst.rs1_addr, de_inst.rs2_addr, RegWriteW, RdW, 
+    REG_FILE registerFile(RS1A1, RS2A2, RegWriteW, RdW, 
                             ResultW, CLK, RD1D, RD2D);
      
     
     // Extend
     logic [31:7] InstrDExt;
-    logic [1:0] ImmSrcD;
+    //logic [1:0] ImmSrcD;
     logic [31:0] ImmExtD;
     
     assign InstrDExt = InstrD[31:7];
     
     EXTEND extend(InstrDExt, ImmSrcD, ImmExtD);
     
+    logic [6:0] op;
+    logic [2:0] funct3;
+    logic funct7;
+    logic [1:0] ALUop;
+    
+    assign op = InstrD[6:0];
+    assign funct3 = InstrD[14:12];
+    assign funct7 = InstrD[30];
+        
+    // ControlUnit
+    ControlUnit MainDecoder(op, RegWriteD, ResultSrcD,MemWriteD, JumpD, BranchD, ALUop,ALUSrcD,ImmSrcD);
+        
+   // ALU Decoder
+    ALUDecoder AluDecoder(funct3, funct7, op5, ALUop, ALUControlD);
+    
     // ID_EX_REG
     logic [31:0] RD1E, RD2E, PCE, ImmExtE, PCPlus4E;
     logic [11:7] RdE;
+    logic [4:0] Rs1E, Rs2E;
     
-    ID_EX_PipeReg IDEXReg(CLK, RD1D, RD2D, PCD, de_inst.rd_addr, ImmExtD, PCPlus4D, 
-               RD1E, RD2E, PCE, RdE, ImmExtE, PCPlus4E);
+    ID_EX_PipeReg IDEXReg(CLK, RegWriteD, ResultSrcD, MemWriteD, JumpD, BranchD, ALUControlD, ALUSrcD,
+                        RegWriteE, ResultSrcE, MemWriteE, JumpE, BranchE, ALUControlE, ALUSrcE,
+                        RD1D, RD2D, PCD, Rs1D, Rs2D, RdD, ImmExtD, PCPlus4D, 
+                        RD1E, RD2E, PCE, Rs1E, Rs2E, RdE, ImmExtE, PCPlus4E, FlushE);
 	
 ////==== Execute ======================================================
 //     logic [31:0] ex_mem_rs2;
@@ -156,10 +203,15 @@ module OTTER_MCU(input CLK,
 //     logic [31:0] opA_forwarded;
 //     logic [31:0] opB_forwarded;
         logic [31:0] PCTargetE, ALUResultE, SrcBE, WriteDataE;
-        logic [2:0] ALUControlE;
-        logic ALUSrcE, ZeroE;
+        //logic [2:0] ALUControlE;
+//        logic ALUSrcE, ZeroE;
+        logic ZeroE;
         
-        assign WriteDataE = RD2E;
+        // No longer needed after BEMux.
+//        assign WriteDataE = RD2E;
+        
+        ThreeByOneMux AEMux(RD1E, ResultW, ALUResultM, ForwardAE, SrcAE);
+        ThreeByOneMux BEMux(RD2E, ResultW, ALUResultM, ForwardBE, WriteDataE);
         
         // Mux
         TwoByOneMux EXMux(RD2E, ImmExtE, ALUSrcE, SrcBE); 
@@ -170,18 +222,22 @@ module OTTER_MCU(input CLK,
         // Adder
         ADDER exAdder(PCE, ImmExtE, PCTargetE);
         
+        
+        
         // EX_Mem_Reg
         logic [31:0] ALUResultM, WriteDataM, PCPlus4M;
         logic [11:7] RdM;
         
-        EX_M_PipeReg EXMReg(CLK, ALUResultE, WriteDataE, RdE, PCPlus4E, ALUResultM, 
+        EX_M_PipeReg EXMReg(CLK, RegWriteE, ResultSrcE, MemWriteE, 
+                        RegWriteM, ResultSrcM, MemWriteM,
+                        ALUResultE, WriteDataE, RdE, PCPlus4E, ALUResultM,
                         WriteDataM, RdM, PCPlus4M);
 
 ////==== Memory ======================================================
     
 //    assign IOBUS_ADDR = ex_mem_aluRes;
 //    assign IOBUS_OUT = ex_mem_rs2;
-    logic MemWriteM;
+    //logic MemWriteM;
     logic [31:0] ReadDataM;
     
     DATAMEM dataMemory(CLK, MemWriteM, ALUResultM, WriteDataM, ReadDataM);
@@ -189,15 +245,29 @@ module OTTER_MCU(input CLK,
     // M Pipeline Reg
     logic [31:0] ALUResultW, ReadDataW, PCPlus4W;
     
-    M_W_PipeReg MWReg(CLK, ALUResultM, ReadDataM, RdM, PCPlus4M, ALUResultW, 
-        ReadDataW, RdW, PCPlus4W);
+    assign PCSrcE = JumpE | (BranchE & ZeroE);
+    
+    M_W_PipeReg MWReg(CLK, RegWriteM, ResultSrcM,RegWriteW, ResultSrcW,
+                        ALUResultM, ReadDataM, RdM, PCPlus4M, ALUResultW, 
+                        ReadDataW, RdW, PCPlus4W);
      
 ////==== Write Back ==================================================
      
     logic [11:7] RdW;
     logic [31:0] ResultW;
-    logic [1:0] ResultSrcW;
  
     ThreeByOneMux WMux(ALUResultW, ReadDataW, PCPlus4W, ResultSrcW, ResultW);
+    
+////==== Hazard Unit ==================================================
+    
+    logic [1:0] ForwardAE, ForwardBE;
+    
+    HazardUnit hazard_unit(Rs1E, Rs2E, ForwardAE, ForwardBE, 
+                            RdM, RegWriteM, RdW, RegWriteW, StallF, StallD,
+                            Rs1D, Rs2D, FlushE, RdE, ResultSrcE_MSB);
+                            
+////==== Stalling ==================================================
+    logic StallF, StallD, FlushE, ResultSrcE_MSB;   
+    assign ResultSrcE_MSB = ResultSrcE[0];                   
             
 endmodule

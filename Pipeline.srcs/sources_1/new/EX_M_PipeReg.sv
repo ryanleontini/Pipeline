@@ -19,9 +19,19 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// Third pipeline register
 module EX_M_PipeReg(
     input CLK,
+    
+    // CU Values
+    input RegWriteE,
+    input [1:0] ResultSrcE,
+    input MemWriteE,
+    output RegWriteM,
+    output [1:0] ResultSrcM,
+    output MemWriteM,
+    
+    // Pipeline Values
     input [31:0] ALUResultE,
     input [31:0] WriteDataE,
     input [11:7] RdE,
@@ -32,6 +42,7 @@ module EX_M_PipeReg(
     output [31:0] PCPlus4M
     );
     
+    reg [3:0] ramCU;
     reg [31:0] ram1 [2:0];
     reg [11:7] ram2;
     
@@ -40,8 +51,13 @@ module EX_M_PipeReg(
         for (i = 0; i < 3; i = i + 1) begin
             ram1[i]=0;
         end
+        ramCU = 0;
         ram2 = 0;
     end
+    
+    assign RegWriteM = ramCU[0];
+    assign ResultSrcM = ramCU[2:1];
+    assign MemWriteM = ramCU[3]; 
     
     assign ALUResultM = ram1[0];
     assign WriteDataM = ram1[1];
@@ -49,6 +65,12 @@ module EX_M_PipeReg(
     assign RdM = ram2;
     
     always @ (posedge CLK) begin
+    
+        ramCU[0] <= RegWriteE;
+        ramCU[2:1] <= ResultSrcE;
+        ramCU[3] <= MemWriteE;
+        
+        
         ram1[0] <= ALUResultE;
         ram1[1] <= WriteDataE;
         ram1[2] <= PCPlus4E;

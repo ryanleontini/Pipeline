@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// First pipeline register
 module IF_ID_PipeReg(
     input CLK,
     input [31:0] InstrFromIM,
@@ -27,7 +27,8 @@ module IF_ID_PipeReg(
     input [31:0] PCPlus4FromF,
     output [31:0] InstrToD,
     output [31:0] PCToD,
-    output [31:0] PCPlus4ToD
+    output [31:0] PCPlus4ToD,
+    input StallDFlipped
     );
     
     reg [31:0] ram [0:2];
@@ -46,9 +47,11 @@ module IF_ID_PipeReg(
     assign PCPlus4ToD = ram[2];
     
     always @ (posedge CLK) begin
-        ram[0] <= InstrFromIM;
-        ram[1] <= PCFromF;
-        ram[2] <= PCPlus4FromF;
+        if (StallDFlipped) begin
+            ram[0] <= InstrFromIM;
+            ram[1] <= PCFromF;
+            ram[2] <= PCPlus4FromF;
+        end;
     end
     
 endmodule
