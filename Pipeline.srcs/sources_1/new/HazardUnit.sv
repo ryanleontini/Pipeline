@@ -23,14 +23,18 @@
 module HazardUnit(
     input [4:0] Rs1E,
     input [4:0] Rs2E,
-    output [1:0] ForwardAE,
-    output [1:0] ForwardBE,
+    output reg [1:0] ForwardAE,
+    output reg [1:0] ForwardBE,
     input RdM,
     input RegWriteM,
     input RdW,
-    input RegWriteW
-    );
+    input RegWriteW,
     
+    // Stalling
+    output StallF, StallD, FlushE, ResultSrcE_MSB,
+    input Rs1D, Rs2D, RdE
+    );
+       
     always_comb begin
         if ((Rs1E == RdM) && RegWriteM && Rs1E != 0)
             ForwardAE = 2'b10;
@@ -41,12 +45,20 @@ module HazardUnit(
     end
     
     always_comb begin
-        if ((Rs2E == RdM) && RegWriteM && Rs1E != 0)
+        if ((Rs2E == RdM) && RegWriteM && Rs2E != 0)
             ForwardBE = 2'b10;
-        else if ((Rs2E == RdW) && RegWriteW && Rs1E != 0)
+        else if ((Rs2E == RdW) && RegWriteW && Rs2E != 0)
             ForwardBE = 2'b01;
         else 
             ForwardBE = 2'b00;
     end    
+    
+    // Stalling Logic.
+    logic lwStall;
+    
+    assign lwStall = ((Rs1D == RdE) || (Rs2D == RdE)) && ResultSrcE_MSB;
+    assign StallF = lwStall;
+    assign StallD = lwStall;
+    assign FlushE = lwStall;
     
 endmodule

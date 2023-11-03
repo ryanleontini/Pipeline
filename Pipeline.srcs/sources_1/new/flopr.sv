@@ -24,11 +24,15 @@ module flopReset(
     input logic clk,
     input logic reset,
     input logic [31:0] d,
-    output logic [31:0] q
+    output logic [31:0] q,
+    input StallFFlipped
     );
     
     always_ff @(posedge clk, posedge reset)
-        if (reset) q <= 0;
-        else q <= d;
+        // Should reset or stall have precedence?
+        if (StallFFlipped) begin
+            if (reset) q <= 0;
+            else q <= d;
+        end
         
 endmodule
