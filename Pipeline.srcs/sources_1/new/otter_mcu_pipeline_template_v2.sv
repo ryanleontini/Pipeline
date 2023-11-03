@@ -134,7 +134,7 @@ module OTTER_MCU(input CLK,
     // Basically, if a stall is not being signalled, run the pipe reg.
     assign StallDFlipped = ~StallD;
     
-    IF_ID_PipeReg IFIDReg(CLK, RD, PCF, PCPlus4F, InstrD, PCD, PCPlus4D, StallDFlipped);
+    IF_ID_PipeReg IFIDReg(CLK, RD, PCF, PCPlus4F, InstrD, PCD, PCPlus4D, StallDFlipped, FlushD);
 
      
 //==== Instruction Decode ===========================================
@@ -263,10 +263,10 @@ module OTTER_MCU(input CLK,
     
     HazardUnit hazard_unit(Rs1E, Rs2E, ForwardAE, ForwardBE, 
                             RdM, RegWriteM, RdW, RegWriteW, StallF, StallD, FlushE, 
-                            ResultSrcE_MSB, Rs1D, Rs2D, RdE);
+                            ResultSrcE_MSB, Rs1D, Rs2D, RdE, FlushD, PCSrcE);
                             
 ////==== Stalling ==================================================
-    logic StallF, StallD, FlushE, ResultSrcE_MSB;   
+    logic StallF, StallD, FlushD, FlushE, ResultSrcE_MSB;   
     assign ResultSrcE_MSB = ResultSrcE[0];                   
             
 endmodule

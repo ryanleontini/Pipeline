@@ -32,7 +32,11 @@ module HazardUnit(
     
     // Stalling
     output StallF, StallD, FlushE, ResultSrcE_MSB,
-    input Rs1D, Rs2D, RdE
+    input Rs1D, Rs2D, RdE,
+    
+    // Branch
+    output FlushD,
+    input PCSrcE
     );
        
     always_comb begin
@@ -59,6 +63,7 @@ module HazardUnit(
     assign lwStall = ((Rs1D == RdE) || (Rs2D == RdE)) && ResultSrcE_MSB;
     assign StallF = lwStall;
     assign StallD = lwStall;
-    assign FlushE = lwStall;
+    assign FlushE = lwStall || PCSrcE;
+    assign FlushD = PCSrcE;
     
 endmodule

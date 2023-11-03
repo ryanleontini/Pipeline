@@ -28,7 +28,8 @@ module IF_ID_PipeReg(
     output [31:0] InstrToD,
     output [31:0] PCToD,
     output [31:0] PCPlus4ToD,
-    input StallDFlipped
+    input StallDFlipped,
+    input FlushD
     );
     
     reg [31:0] ram [0:2];
@@ -45,13 +46,21 @@ module IF_ID_PipeReg(
     assign InstrToD = ram[0];
     assign PCToD = ram[1];
     assign PCPlus4ToD = ram[2];
-    
+
     always @ (posedge CLK) begin
-        if (StallDFlipped) begin
+        if (FlushD) begin
+            // If FlushD is asserted, reset the values
+            ram[0] <= 32'b0;
+            ram[1] <= 32'b0;
+            ram[2] <= 32'b0; 
+        end
+        else if (StallDFlipped) begin
+            // Only write to the pipeline register if not stalled or flushed
             ram[0] <= InstrFromIM;
             ram[1] <= PCFromF;
             ram[2] <= PCPlus4FromF;
-        end;
+        end
+        // If StallDFlipped is false and FlushD is false, do nothing (hold the current value)
     end
     
 endmodule
