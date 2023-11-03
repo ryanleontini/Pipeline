@@ -147,11 +147,10 @@ module OTTER_MCU(input CLK,
     opcode_t OPCODE;
     assign OPCODE_t = opcode_t'(opcode);
     
-    logic [4:0] RdD, RS1A1, RS2A2, RDA3;
+    logic [4:0] RdD, RS1A1, RS2A2;
     assign RdD = InstrD[11:7];
     assign RS1A1 = InstrD[19:15];
     assign RS2A2 = InstrD[24:20];
-    assign RDA3 = InstrD[11:7];
     assign de_inst.opcode=OPCODE;
     
     logic [4:0] Rs1D, Rs2D;
@@ -263,8 +262,8 @@ module OTTER_MCU(input CLK,
     logic [1:0] ForwardAE, ForwardBE;
     
     HazardUnit hazard_unit(Rs1E, Rs2E, ForwardAE, ForwardBE, 
-                            RdM, RegWriteM, RdW, RegWriteW, StallF, StallD,
-                            Rs1D, Rs2D, FlushE, RdE, ResultSrcE_MSB);
+                            RdM, RegWriteM, RdW, RegWriteW, StallF, StallD, FlushE, 
+                            ResultSrcE_MSB, Rs1D, Rs2D, RdE);
                             
 ////==== Stalling ==================================================
     logic StallF, StallD, FlushE, ResultSrcE_MSB;   
