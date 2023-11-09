@@ -30,9 +30,11 @@ module flopReset(
     
     always_ff @(posedge clk, posedge reset)
         // Should reset or stall have precedence?
-        if (StallFFlipped) begin
-            if (reset) q <= 0;
-            else q <= d;
+        if (reset) begin
+            q <= 0;
+        end
+        else if (StallFFlipped) begin
+            q <= d;
         end
         
 endmodule

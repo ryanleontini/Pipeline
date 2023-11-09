@@ -43,7 +43,7 @@ module ALUDecoder(
             2'b10: begin
                 case (funct3)
                     3'b000: begin
-                        if (op5 & funct7) begin
+                        if (op5 && funct7) begin
                              ALUControl = 3'b001;   // sub
                         end
                         else begin

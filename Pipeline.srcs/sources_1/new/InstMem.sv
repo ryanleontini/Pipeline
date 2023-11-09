@@ -28,7 +28,7 @@ module INSTMEM(
     logic [31:0] RAM[63:0];
     
     initial 
-        $readmemh("riscvtest2.mem", RAM);
+        $readmemh("forward2.mem", RAM);
     
     assign rd = RAM[a[31:2]]; // word aligned
     

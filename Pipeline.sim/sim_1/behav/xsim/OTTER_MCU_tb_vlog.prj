@@ -1,21 +1,22 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  \
-"../../../../../new_pipeline/ALUDecoder.sv" \
+"../../../../Pipeline.srcs/sources_1/new/ALUDecoder.sv" \
 "../../../../Pipeline.srcs/sources_1/new/Adder.sv" \
-"../../../../../new_pipeline/ControlUnit.sv" \
+"../../../../Pipeline.srcs/sources_1/new/ControlUnit.sv" \
 "../../../../Pipeline.srcs/sources_1/new/DataMem.sv" \
 "../../../../Pipeline.srcs/sources_1/new/EXTEND.sv" \
-"../../../../../new_pipeline/EX_M_PipeReg.sv" \
-"../../../../../new_pipeline/ID_EX_PipeReg.sv" \
-"../../../../../new_pipeline/IF_ID_PipeReg.sv" \
+"../../../../Pipeline.srcs/sources_1/new/EX_M_PipeReg.sv" \
+"../../../../Pipeline.srcs/sources_1/new/HazardUnit.sv" \
+"../../../../Pipeline.srcs/sources_1/new/ID_EX_PipeReg.sv" \
+"../../../../Pipeline.srcs/sources_1/new/IF_ID_PipeReg.sv" \
 "../../../../Pipeline.srcs/sources_1/new/InstMem.sv" \
-"../../../../../new_pipeline/M_W_PipeReg.sv" \
+"../../../../Pipeline.srcs/sources_1/new/M_W_PipeReg.sv" \
 "../../../../Pipeline.srcs/sources_1/new/OTTER_ALU.sv" \
 "../../../../Pipeline.srcs/sources_1/new/REG_FILE.sv" \
 "../../../../Pipeline.srcs/sources_1/new/ThreeByOneMux.sv" \
 "../../../../Pipeline.srcs/sources_1/new/TwoByOneMux.sv" \
 "../../../../Pipeline.srcs/sources_1/new/flopr.sv" \
-"../../../../../new_pipeline/otter_mcu_pipeline_template_v2.sv" \
+"../../../../Pipeline.srcs/sources_1/new/otter_mcu_pipeline_template_v2.sv" \
 "../../../../Pipeline.srcs/sim_1/new/OTTER_MCU_tb.sv" \
 
 # compile glbl module
