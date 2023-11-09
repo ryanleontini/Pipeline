@@ -31,8 +31,8 @@ module HazardUnit(
     input RegWriteW,
     
     // Stalling
-    output StallF, StallD, FlushE, ResultSrcE_MSB,
-    input Rs1D, Rs2D, RdE,
+    output StallF, StallD, FlushE,
+    input ResultSrcE_MSB, Rs1D, Rs2D, RdE,
     
     // Branch
     output FlushD,
