@@ -6,27 +6,4 @@ Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 3 for port 'ALUop' [C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/otter_mcu_pipeline_template_v2.sv:184]
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package xil_defaultlib.$unit_ALUDecoder_sv_852429165
-Compiling module xil_defaultlib.TwoByOneMux
-Compiling module xil_defaultlib.flopReset
-Compiling module xil_defaultlib.INSTMEM
-Compiling module xil_defaultlib.ADDER
-Compiling module xil_defaultlib.IF_ID_PipeReg
-Compiling module xil_defaultlib.REG_FILE
-Compiling module xil_defaultlib.EXTEND
-Compiling module xil_defaultlib.ControlUnit
-Compiling module xil_defaultlib.ALUDecoder
-Compiling module xil_defaultlib.ID_EX_PipeReg
-Compiling module xil_defaultlib.ThreeByOneMux
-Compiling module xil_defaultlib.OTTER_ALU
-Compiling module xil_defaultlib.EX_M_PipeReg
-Compiling module xil_defaultlib.DATAMEM
-Compiling module xil_defaultlib.M_W_PipeReg
-Compiling module xil_defaultlib.HazardUnit
-Compiling module xil_defaultlib.OTTER_MCU
-Compiling module xil_defaultlib.OTTER_MCU_tb
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot OTTER_MCU_tb_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
