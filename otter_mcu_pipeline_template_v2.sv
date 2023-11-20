@@ -79,7 +79,8 @@ module OTTER_MCU(input CLK,
     logic MemWriteD;
     logic JumpD;
     logic BranchD;
-    logic [2:0] ALUControlD;
+    logic [3:0] ALUControlD;
+    logic InvertZeroALU;
     logic ALUSrcD;
     logic [1:0] ImmSrcD;
     
@@ -89,7 +90,7 @@ module OTTER_MCU(input CLK,
     logic MemWriteE;
     logic JumpE;
     logic BranchE;
-    logic [2:0] ALUControlE;
+    logic [3:0] ALUControlE;
     logic ALUSrcE;
     
     logic RegWriteM;
@@ -178,20 +179,21 @@ module OTTER_MCU(input CLK,
     assign op = InstrD[6:0];
     assign funct3 = InstrD[14:12];
     assign funct7 = InstrD[30];
+    assign op5 = op[5];
         
     // ControlUnit
     ControlUnit MainDecoder(op, RegWriteD, ResultSrcD,MemWriteD, JumpD, BranchD, ALUop,ALUSrcD,ImmSrcD);
         
    // ALU Decoder
-    ALUDecoder AluDecoder(funct3, funct7, op5, ALUop, ALUControlD);
+    ALUDecoder AluDecoder(funct3, funct7, op5, ALUop, ALUControlD, InvertZeroD);
     
     // ID_EX_REG
     logic [31:0] RD1E, RD2E, PCE, ImmExtE, PCPlus4E;
     logic [11:7] RdE;
     logic [4:0] Rs1E, Rs2E;
     
-    ID_EX_PipeReg IDEXReg(CLK, RegWriteD, ResultSrcD, MemWriteD, JumpD, BranchD, ALUControlD, ALUSrcD,
-                        RegWriteE, ResultSrcE, MemWriteE, JumpE, BranchE, ALUControlE, ALUSrcE,
+    ID_EX_PipeReg IDEXReg(CLK, RegWriteD, ResultSrcD, MemWriteD, JumpD, BranchD, ALUControlD, InvertZeroD, ALUSrcD,
+                        RegWriteE, ResultSrcE, MemWriteE, JumpE, BranchE, ALUControlE, InvertZeroE, ALUSrcE,
                         RD1D, RD2D, PCD, Rs1D, Rs2D, RdD, ImmExtD, PCPlus4D, 
                         RD1E, RD2E, PCE, Rs1E, Rs2E, RdE, ImmExtE, PCPlus4E, FlushE);
 	
@@ -201,7 +203,7 @@ module OTTER_MCU(input CLK,
 //     instr_t ex_mem_inst;
 //     logic [31:0] opA_forwarded;
 //     logic [31:0] opB_forwarded;
-        logic [31:0] PCTargetE, ALUResultE, SrcBE, WriteDataE;
+        logic [31:0] PCTargetE, ALUResultE, SrcAE, SrcBE, WriteDataE;
         //logic [2:0] ALUControlE;
 //        logic ALUSrcE, ZeroE;
         logic ZeroE;
@@ -213,10 +215,10 @@ module OTTER_MCU(input CLK,
         ThreeByOneMux BEMux(RD2E, ResultW, ALUResultM, ForwardBE, WriteDataE);
         
         // Mux
-        TwoByOneMux EXMux(RD2E, ImmExtE, ALUSrcE, SrcBE); 
+        TwoByOneMux EXMux(WriteDataE, ImmExtE, ALUSrcE, SrcBE); 
      
         // Creates a RISC-V ALU
-        OTTER_ALU ALU(RD1E, SrcBE, ALUControlE, ALUResultE, ZeroE); // the ALU
+        OTTER_ALU ALU(SrcAE, SrcBE, ALUControlE, InvertZeroE, ALUResultE, ZeroE); // the ALU
         
         // Adder
         ADDER exAdder(PCE, ImmExtE, PCTargetE);
@@ -261,8 +263,8 @@ module OTTER_MCU(input CLK,
     
     logic [1:0] ForwardAE, ForwardBE;
     
-    HazardUnit hazard_unit(Rs1E, Rs2E, ForwardAE, ForwardBE, 
-                            RdM, RegWriteM, RdW, RegWriteW, StallF, StallD, FlushE, 
+    HazardUnit hazardUnit(Rs1E, Rs2E, ForwardAE, ForwardBE, 
+                            RdM, RdW, RegWriteM, RegWriteW, StallF, StallD, FlushE, 
                             ResultSrcE_MSB, Rs1D, Rs2D, RdE, FlushD, PCSrcE);
                             
 ////==== Stalling ==================================================
