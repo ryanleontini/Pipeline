@@ -25,14 +25,14 @@ module HazardUnit(
     input [4:0] Rs2E,
     output reg [1:0] ForwardAE,
     output reg [1:0] ForwardBE,
-    input [4:0] RdM, RdW,
+    input RdM,
     input RegWriteM,
+    input RdW,
     input RegWriteW,
     
     // Stalling
-    output StallF, StallD, FlushE,
-    input ResultSrcE_MSB, 
-    input [4:0] Rs1D, Rs2D, RdE,
+    output StallF, StallD, FlushE, ResultSrcE_MSB,
+    input Rs1D, Rs2D, RdE,
     
     // Branch
     output FlushD,
