@@ -29,14 +29,16 @@ module ID_EX_PipeReg(
     input MemWriteD,
     input JumpD,
     input BranchD,
-    input [2:0] ALUControlD,
+    input [3:0] ALUControlD,
+    input InvertZeroD,
     input ALUSrcD,
     output RegWriteE,
     output [1:0] ResultSrcE,
     output MemWriteE,
     output JumpE,
     output BranchE,
-    output [2:0] ALUControlE,
+    output [3:0] ALUControlE,
+    input InvertZeroE,
     output ALUSrcE,
     
     // Pipeline Values
@@ -59,7 +61,7 @@ module ID_EX_PipeReg(
     input FlushE
     );
     
-    reg [9:0] ramCU;
+    reg [11:0] ramCU;
     reg [31:0] ram1 [4:0];
     reg [11:7] ram2;
     reg [4:0] ramHazard [1:0];
@@ -79,8 +81,9 @@ module ID_EX_PipeReg(
     assign MemWriteE = ramCU[3];
     assign JumpE = ramCU[4];
     assign BranchE = ramCU[5];
-    assign ALUControlE = ramCU[8:6];
-    assign ALUSrcE = ramCU[9];
+    assign ALUControlE = ramCU[9:6];
+    assign InvertZeroE = ramCU[10];
+    assign ALUSrcE = ramCU[11];
     
     assign RD1E = ram1[0];
     assign RD2E = ram1[1];
@@ -94,7 +97,7 @@ module ID_EX_PipeReg(
     always @ (posedge CLK) begin
         if (FlushE) begin
             // Clear the control signals and hazard information
-            ramCU <= 10'd0; // Assuming there are 10 control bits in ramCU
+            ramCU <= 12'd0; // Assuming there are 10 control bits in ramCU
             ramHazard[0] <= 5'd0;
             ramHazard[1] <= 5'd0;
             ram2 <= 5'd0; // Assuming that the [11:7] width here is 5 bits like a register identifier
@@ -111,8 +114,9 @@ module ID_EX_PipeReg(
             ramCU[3] <= MemWriteD;
             ramCU[4] <= JumpD;
             ramCU[5] <= BranchD;
-            ramCU[8:6] <= ALUControlD;
-            ramCU[9] <= ALUSrcD;
+            ramCU[9:6] <= ALUControlD;
+            ramCU[10] <= InvertZeroD;
+            ramCU[11] <= ALUSrcD;
         
             ram1[0] <= RD1D;
             ram1[1] <= RD2D;
