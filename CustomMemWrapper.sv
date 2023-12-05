@@ -43,10 +43,9 @@ module CustomMemWrapper(
     logic delivered;
     logic [127:0] block;
     
-    L1 CacheIM(         .clk(MEM_CLK),              // L1: instruction memory
+    L1 CacheIM(         // L1: instruction memory
                         .rst(RST),
             
-                        .read(MEM_READ1),           // From CPU
                         .raddress(MEM_ADDR1),       // From CPU
                         .rdata(MEM_DOUT1),          // To CPU
                         .hit(hit),                  // To PARAM
@@ -55,21 +54,13 @@ module CustomMemWrapper(
                         .delivered(delivered),      // From PARAM
                         .blockin(block) );          // From PARAM
                 
-    ParamMemory PARAM(  .clk(MEM_CLK),              // MAIN MEMORY: IM & Data
+    ParamMemory Param(  .clk(MEM_CLK),              // MAIN MEMORY: IM & Data
                         .rst(RST),
                         .raddress1(MEM_ADDR1),      // IM Address
-                        .address2(MEM_ADDR2),       // Data Address
-                        .read(MEM_READ2),           // Read Data
-                        .hit(hit),                  // From L1
-                        .write(MEM_WRITE2),         // From CPU
-                        .wdata(MEM_DIN2),           // From CPU
-                        .memValidTwo(MEM_DIN2),     // To CPU
-                        .rdata2(MEM_DOUT2),         // To CPU
+                        .hit(hit),
+                        .stall(stall),                  // From L1         // InstrD
                         .delivered(delivered),      // To L1
-                        .blockout(block) );         // To L1
-        
-     
-    
-    
+                        .blockout(block),
+                        .rdata2(MEM_DOUT2));         // To L1 
     
 endmodule

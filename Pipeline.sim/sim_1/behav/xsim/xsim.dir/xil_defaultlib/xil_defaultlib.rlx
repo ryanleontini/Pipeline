@@ -13,7 +13,7 @@ C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/EX_M_PipeReg.
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/HazardUnit.sv,1699568006,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ID_EX_PipeReg.sv,,HazardUnit,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ID_EX_PipeReg.sv,1698972256,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/IF_ID_PipeReg.sv,,ID_EX_PipeReg,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/IF_ID_PipeReg.sv,1699030344,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv,,IF_ID_PipeReg,,uvm,,,,,,
-C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv,1699573918,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/M_W_PipeReg.sv,,INSTMEM,,uvm,,,,,,
+C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/InstMem.sv,1699653981,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/M_W_PipeReg.sv,,INSTMEM,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/M_W_PipeReg.sv,1698795747,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv,,M_W_PipeReg,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/OTTER_ALU.sv,1698797668,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,,OTTER_ALU,,uvm,,,,,,
 C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/REG_FILE.sv,1698812200,systemVerilog,,C:/Users/rmleo/Desktop/CPE333/Pipeline/Pipeline.srcs/sources_1/new/ThreeByOneMux.sv,,REG_FILE,,uvm,,,,,,
