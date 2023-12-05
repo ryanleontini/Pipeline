@@ -22,45 +22,38 @@
 
 module CustomMemWrapper(
     
-    input MEM_CLK,
+    input CLK,
     input logic RST,
-    input [31:0] MEM_ADDR1,         // Instruction Memory Port
-    input [31:0] MEM_ADDR2,         // Data Memory Port
-    input [31:0] MEM_DIN2,
-    input MEM_WRITE2,
-    input MEM_READ1,
-    input MEM_READ2,
+    input [31:0] RADDRESS,         
     
-    input [1:0] MEM_SIZE,           // Do this in PARAM?
-
-    output logic [31:0] MEM_DOUT1,
-    output logic [31:0] MEM_DOUT2,
-    output logic MEM_VALID1, 
-    output logic MEM_VALID2 );
+    output logic [31:0] RDATA,
+    output logic HIT );
     
-    
-    logic hit;
-    logic delivered;
+    logic delivered;                                // Internal wiring
     logic [127:0] block;
+    logic hit;
     
-    L1 CacheIM(         // L1: instruction memory
-                        .rst(RST),
-            
-                        .raddress(MEM_ADDR1),       // From CPU
-                        .rdata(MEM_DOUT1),          // To CPU
+    assign HIT = hit;
+    
+    L1 CacheIM(         .rst(RST),                  // L1
+                        
+                        .raddress(RADDRESS),        // From CPU
+                        .rdata(RDATA),              // To CPU
+                        
                         .hit(hit),                  // To PARAM
-                        .memValid1(MEM_VALID1),     // To CPU
             
                         .delivered(delivered),      // From PARAM
                         .blockin(block) );          // From PARAM
                 
-    ParamMemory Param(  .clk(MEM_CLK),              // MAIN MEMORY: IM & Data
+    ParamMemory PARAM(  .clk(CLK),                  // MAIN MEMORY
                         .rst(RST),
-                        .raddress1(MEM_ADDR1),      // IM Address
-                        .hit(hit),
-                        .stall(stall),                  // From L1         // InstrD
+                        .raddress(RADDRESS),        // From CPU
+                        .hit(hit),                  // From L1
                         .delivered(delivered),      // To L1
-                        .blockout(block),
-                        .rdata2(MEM_DOUT2));         // To L1 
+                        .blockout(block) );         // To L1
+        
+     
+    
+    
     
 endmodule
