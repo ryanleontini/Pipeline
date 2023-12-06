@@ -118,7 +118,11 @@ module OTTER_MCU(input CLK,
     assign memRead1 = 1'b1; 	//Fetch new instruction every cycle
     
     // Instruction Memory
-    INSTMEM instructionMemory(PCF, RD);
+    // INSTMEM instructionMemory(PCF, RD);
+    
+    logic HIT;
+    CustomMemWrapper instructionMemory(.CLK(CLK), .RST(RESET), .PC(PCF), .RDATA(RD), .HIT(HIT) );
+    
     
     // ADDER
     logic [31:0] hardcoded4;
@@ -265,7 +269,7 @@ module OTTER_MCU(input CLK,
     
     HazardUnit hazardUnit(Rs1E, Rs2E, ForwardAE, ForwardBE, 
                             RdM, RdW, RegWriteM, RegWriteW, StallF, StallD, FlushE, 
-                            ResultSrcE_MSB, Rs1D, Rs2D, RdE, FlushD, PCSrcE);
+                            ResultSrcE_MSB, Rs1D, Rs2D, RdE, HIT, FlushD, PCSrcE);
                             
 ////==== Stalling ==================================================
     logic StallF, StallD, FlushD, FlushE, ResultSrcE_MSB;   

@@ -24,7 +24,7 @@ module CustomMemWrapper(
     
     input CLK,
     input logic RST,
-    input [31:0] RADDRESS,         
+    input [31:0] PC,         
     
     output logic [31:0] RDATA,
     output logic HIT );
@@ -33,11 +33,13 @@ module CustomMemWrapper(
     logic [127:0] block;
     logic hit;
     
+    
     assign HIT = hit;
     
-    L1 CacheIM(         .rst(RST),                  // L1
+    L1 CacheIM(         .clk(CLK),                  // L1
+                        .rst(RST),                  
                         
-                        .raddress(RADDRESS),        // From CPU
+                        .raddress(PC[31:1]),        // From CPU
                         .rdata(RDATA),              // To CPU
                         
                         .hit(hit),                  // To PARAM
@@ -47,7 +49,7 @@ module CustomMemWrapper(
                 
     ParamMemory PARAM(  .clk(CLK),                  // MAIN MEMORY
                         .rst(RST),
-                        .raddress(RADDRESS),        // From CPU
+                        .raddress(raddress),        // From CPU
                         .hit(hit),                  // From L1
                         .delivered(delivered),      // To L1
                         .blockout(block) );         // To L1
