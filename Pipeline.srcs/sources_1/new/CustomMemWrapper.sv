@@ -48,8 +48,7 @@ module CustomMemWrapper(
                         .blockin(block) );          // From PARAM
                 
     ParamMemory PARAM(  .clk(CLK),                  // MAIN MEMORY
-                        .rst(RST),
-                        .raddress(raddress),        // From CPU
+                        .raddress(PC),        // From CPU
                         .hit(hit),                  // From L1
                         .delivered(delivered),      // To L1
                         .blockout(block) );         // To L1

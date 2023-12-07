@@ -25,7 +25,7 @@ module ParamMemory(
     input [31:0] raddress,
     input hit,
     output reg delivered,
-    output reg [127:0] p_blockout
+    output reg [127:0] blockout
 );
 
     logic [31:0] RAM[4095:0];
@@ -40,10 +40,10 @@ module ParamMemory(
     always_ff @(posedge clk) begin
         if (!hit) begin
             delivered <= 1'b1;
-            p_blockout[31:0]   = RAM[base_index];
-            p_blockout[63:32]  = RAM[base_index + 1];
-            p_blockout[95:64]  = RAM[base_index + 2];
-            p_blockout[127:96] = RAM[base_index + 3];
+            blockout[31:0]   = RAM[base_index];
+            blockout[63:32]  = RAM[base_index + 1];
+            blockout[95:64]  = RAM[base_index + 2];
+            blockout[127:96] = RAM[base_index + 3];
         end else begin
             delivered <= 1'b0;
         end
