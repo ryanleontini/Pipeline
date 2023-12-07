@@ -25,7 +25,7 @@ module L1(  input logic clk,
             
             input logic [29:0] raddress,    // 25b Tag, 3b indx, 2b word offset
             output logic [31:0] rdata,      // Output one word
-            output logic hit,               // MAIN MEMORY
+            output logic miss,               // MAIN MEMORY
             
             input logic delivered,
             input logic [127:0] blockin
@@ -54,8 +54,6 @@ module L1(  input logic clk,
                 DATA[i] <= '0;
                 INFO[i][0] <= '0; 
                 INFO[i][1] <= '0; end end
-                
-       
         
         else if (waiting && delivered) begin
             waiting <= 0;
@@ -68,23 +66,23 @@ module L1(  input logic clk,
             
         if (INFO[rline][0][25:1] == raddress[29:5] && INFO[rline][0][0]) begin      // Reading block 0
    
-            roffset <= 32*raddress[1:0]+128;
-            rdata <= DATA[rline][roffset -: 32];    // same thing as [rindex:(rindex-32)]
+            roffset = 32*raddress[1:0]+128; // calculating word offset, shifting 
+            rdata = DATA[rline][roffset +: 32];    // same thing as [rindex:(rindex-32)]
                         
-            hit = 1;
+            miss = 0;
             LRU[rline] = 1; end
                 
         else if (INFO[rline][1][25:1] == raddress[29:5] && INFO[rline][1][0]) begin // Reading block 1
          
             roffset = 32*(raddress[1:0]+1); 
-            rdata = DATA[rline][roffset -: 32]; 
+            rdata = DATA[rline][roffset +: 32]; 
             
-            hit = 1;            
+            miss = 0;            
             LRU[rline] = 0; end  
                 
         else begin
             waiting = 1;
-            hit = 0; end                   
+            miss = 1; end                   
         
     end 
     

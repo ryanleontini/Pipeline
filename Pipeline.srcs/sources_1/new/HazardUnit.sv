@@ -33,7 +33,7 @@ module HazardUnit(
     output StallF, StallD, FlushE,
     input ResultSrcE_MSB, 
     input [4:0] Rs1D, Rs2D, RdE,
-    input Hit,
+    input miss,
     
     // Branch
     output FlushD,
@@ -62,8 +62,8 @@ module HazardUnit(
     logic lwStall;
     
     assign lwStall = ((Rs1D == RdE) || (Rs2D == RdE)) && ResultSrcE_MSB;
-    assign StallF = lwStall || ~Hit;
-    assign StallD = lwStall || ~Hit;
+    assign StallF = lwStall || miss;
+    assign StallD = lwStall || miss;
     assign FlushE = lwStall || PCSrcE;
     assign FlushD = PCSrcE;
     

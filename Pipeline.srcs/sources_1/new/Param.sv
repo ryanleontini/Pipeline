@@ -23,7 +23,7 @@
 module ParamMemory(
     input clk,
     input [31:0] raddress,
-    input hit,
+    input miss,
     output reg delivered,
     output reg [127:0] blockout
 );
@@ -31,14 +31,14 @@ module ParamMemory(
     logic [31:0] RAM[4095:0];
 
     initial 
-        $readmemh("hazardtest4.mem", RAM);
+        $readmemh("cachefinal.mem", RAM);
 
     // Calculate the base index for the block of instructions
-    wire [9:0] base_index = raddress[31:4];
+    wire [9:0] base_index = raddress[31:2];
 
     // Create block out of current word + 3 following words.
     always_ff @(posedge clk) begin
-        if (!hit) begin
+        if (miss) begin
             delivered <= 1'b1;
             blockout[31:0]   = RAM[base_index];
             blockout[63:32]  = RAM[base_index + 1];
