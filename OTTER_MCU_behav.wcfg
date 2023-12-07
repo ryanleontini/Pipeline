@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="345.968 ns"></ZoomStartTime>
-      <ZoomEndTime time="410.807 ns"></ZoomEndTime>
-      <Cursor1Time time="356.839 ns"></Cursor1Time>
+      <ZoomStartTime time="13.188 ns"></ZoomStartTime>
+      <ZoomEndTime time="71.479 ns"></ZoomEndTime>
+      <Cursor1Time time="400.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="138"></NameColumnWidth>
+      <NameColumnWidth column_width="126"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="30" />
    <wvobject fp_name="/OTTER_MCU_tb/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -432,13 +432,29 @@
          <obj_property name="ObjectShortName">ResultW[31:0]</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="/OTTER_MCU_tb/CLK" type="logic">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
    <wvobject fp_name="group120" type="group">
       <obj_property name="label">L1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/rdata" type="array">
-         <obj_property name="ElementShortName">rdata[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/DATA" type="array">
+         <obj_property name="ElementShortName">DATA[7:0][255:0]</obj_property>
+         <obj_property name="ObjectShortName">DATA[7:0][255:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/INFO" type="array">
+         <obj_property name="ElementShortName">INFO[7:0][1:0][25:0]</obj_property>
+         <obj_property name="ObjectShortName">INFO[7:0][1:0][25:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/roffset" type="array">
+         <obj_property name="ElementShortName">roffset[7:0]</obj_property>
+         <obj_property name="ObjectShortName">roffset[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/woffset" type="array">
+         <obj_property name="ElementShortName">woffset[7:0]</obj_property>
+         <obj_property name="ObjectShortName">woffset[7:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/raddress" type="array">
          <obj_property name="ElementShortName">raddress[29:0]</obj_property>
@@ -448,9 +464,13 @@
          <obj_property name="ElementShortName">delivered</obj_property>
          <obj_property name="ObjectShortName">delivered</obj_property>
       </wvobject>
-      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/hit" type="logic">
-         <obj_property name="ElementShortName">hit</obj_property>
-         <obj_property name="ObjectShortName">hit</obj_property>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/waiting" type="logic">
+         <obj_property name="ElementShortName">waiting</obj_property>
+         <obj_property name="ObjectShortName">waiting</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/miss" type="logic">
+         <obj_property name="ElementShortName">miss</obj_property>
+         <obj_property name="ObjectShortName">miss</obj_property>
       </wvobject>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/raddress" type="array">
          <obj_property name="ElementShortName">raddress[29:0]</obj_property>
@@ -460,6 +480,14 @@
          <obj_property name="ElementShortName">blockin[127:0]</obj_property>
          <obj_property name="ObjectShortName">blockin[127:0]</obj_property>
       </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/CacheIM/rdata" type="array">
+         <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OTTER_MCU_tb/UUT/IFIDReg/InstrToD" type="array">
+         <obj_property name="ElementShortName">InstrToD[31:0]</obj_property>
+         <obj_property name="ObjectShortName">InstrToD[31:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group130" type="group">
       <obj_property name="label">Param</obj_property>
@@ -468,10 +496,6 @@
       <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/PARAM/raddress" type="array">
          <obj_property name="ElementShortName">raddress[31:0]</obj_property>
          <obj_property name="ObjectShortName">raddress[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/PARAM/hit" type="logic">
-         <obj_property name="ElementShortName">hit</obj_property>
-         <obj_property name="ObjectShortName">hit</obj_property>
       </wvobject>
       <wvobject fp_name="/OTTER_MCU_tb/UUT/instructionMemory/PARAM/delivered" type="logic">
          <obj_property name="ElementShortName">delivered</obj_property>
